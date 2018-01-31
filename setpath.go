@@ -10,11 +10,11 @@ import (
 )
 
 var (
-	DIRNAMES = []string{"src", "pkg", "bin"}
-	noSrc    = flag.Bool("no-src", false, "If src folder has to be skipped")
-	args     []string
-	path     string
-	executableName
+	DIRNAMES       = []string{"src", "pkg", "bin"}
+	noSrc          = flag.Bool("no-src", false, "If src folder has to be skipped")
+	args           []string
+	path           string
+	executableName string
 )
 
 // Returns absolute path or relative path of a directory and err if not found
@@ -68,7 +68,7 @@ func goPathLayout(dir string) {
 	}
 }
 
-func parseCmdArgs(command []string) (executableName string, args []string) {
+func parseCmdArgs(command []string) (string, []string) {
 	return command[0], command
 }
 
@@ -76,14 +76,14 @@ func main() {
 	flag.Parse()
 
 	if *noSrc == false {
-		executableName, args := parseCmdArgs(os.Args[1:])
+		executableName, args = parseCmdArgs(os.Args[1:])
 		dir, getwdErr := getwd()
 		if getwdErr != nil {
 			log.Fatal(getwdErr)
 		}
 		goPathLayout(dir)
 	} else {
-		executableName, args := parseCmdArgs(flag.Args())
+		executableName, args = parseCmdArgs(flag.Args())
 	}
 
 	binary, lookErr := lookPath(executableName)

@@ -35,10 +35,16 @@ Setting GOPATH: /Users/poorva/workspace/client1/
 All the commands are directly run in shell
 
 Though it is not a mandate to have `src` folder before you build go files, this assumes that you have your files to build/install/run or for that matter any command in the `src` folder
-In case you want to just run the commands without `src` folder then use `-no-src` flag
+In case you want to just run the commands *without* `src` folder then use `-no-src` flag
 ```
 poorva:~/workspace/client1$ setpath -no-src go build . <other flags>
-Setting GOPATH: /Users/poorva/workspace/client1/
 ```
+
+You can download mac and linux (64 bit) binaries from -
+[mac](https://s3.ap-south-1.amazonaws.com/gosetpath/setpath_darwin)
+[Linux](https://s3.ap-south-1.amazonaws.com/gosetpath/setpath_linux_64)
+
+Fell free to compile for your operating system or file bugs
+
 
 
